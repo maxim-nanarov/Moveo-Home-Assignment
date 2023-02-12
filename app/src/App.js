@@ -1,30 +1,30 @@
-import React, { useState } from "react";
-import hljs from "highlight.js";
-import "highlight.js/styles/default.css";
+import React from "react";
+import { useState, useEffect } from "react";
+import CodeEditor from "react-simple-code-editor";
+import { highlight, languages } from "prismjs/components/prism-core";
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/themes/prism.css";
 
-const CodeBlock = ({ title, code }) => {
-  const [currentCode, setCurrentCode] = useState(code);
-  const codeRef = React.createRef();
+const Lobby = () => {
+  const [code, setCode] = useState(`console.log('Hello World');`);
 
-  const handleCodeUpdate = (event) => {
-    setCurrentCode(event.target.value);
+  const handleValueChange = (value) => {
+    setCode(value);
   };
 
-  React.useEffect(() => {
-    hljs.highlightBlock(codeRef.current);
-  }, [currentCode]);
-
   return (
-    <div className="code-block">
-      <h2>{title}</h2>
-      <textarea value={currentCode} onChange={handleCodeUpdate} />
-      <pre>
-        <code ref={codeRef} className="javascript">
-          {currentCode}
-        </code>
-      </pre>
-    </div>
+    <CodeEditor
+      value={code}
+      onValueChange={handleValueChange}
+      highlight={(code) => highlight(code, languages.javascript)}
+      padding={10}
+      style={{
+        fontFamily: '"Fira code", "Fira Mono", monospace',
+        fontSize: 12,
+      }}
+    />
   );
 };
 
-export default CodeBlock;
+export default Lobby;

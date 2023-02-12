@@ -1,0 +1,13 @@
+.code-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.code-preview {
+  flex: 1;
+  font-family: monospace;
+  padding: 0.5em;
+  border-radius: 4px;
+  background-color: #282c34;
+  color: #abb2bf;
+}
