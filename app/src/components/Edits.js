@@ -25,7 +25,7 @@ const Edits = () => {
   ///?id=${state._id}
   function Update() {
     axios
-      .put(`http://localhost:2999/Code-Blocks-Update/${state._id}`, {
+      .put(`http://localhost:2999/Code-Blocks-Update/${state.Title}`, {
         code,
       })
       .then((res) => {

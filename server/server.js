@@ -1,6 +1,7 @@
 require("dotenv").config();
 var cors = require("cors");
 const { MongoClient } = require("mongodb");
+const ObjectId = require("mongodb").BSON;
 const express = require("express");
 const uri = `mongodb+srv://maxim:${process.env.MONGODB_PASSWORD}@codeblocks.6ywgpyd.mongodb.net/?retryWrites=true&w=majority`;
 const app = express();
@@ -13,12 +14,7 @@ let db;
 let collection;
 app.use(cors());
 console.log("Before connecting to the database");
-client.connect(async (err) => {
-  if (err) {
-    console.error(err);
-    return;
-  }
-});
+client.connect();
 db = client.db("Moveo-HA-DB");
 collection = db.collection("Code-Blocks");
 app.use(express.json());
@@ -36,23 +32,23 @@ app.get("/Code-Block", async (req, res) => {
   res.send(devices);
 });
 // UPDATE
-app.put("/Code-Blocks-Update/:id", async (req, res) => {
-  const id = req.params.id;
+app.put("/Code-Blocks-Update/:Title", async (req, res) => {
+  const Title = req.params.Title;
   const updatedDevice = req.body;
   console.log(updatedDevice.code);
-  try {
-    const result = await collection.updateOne(
-      { _id: id },
-      {
-        $set: { Code: updatedDevice.code },
-        $currentDate: { lastUpdated: true },
-      }
-    );
-    res.send(result);
-  } catch (error) {
-    console.error(error);
-    res.status(500).send({ message: "Update failed" });
-  }
+  const devices = await collection.find().toArray();
+  const device = await collection.find({ Title: Title }).toArray();
+  console.log(devices);
+  console.log(device);
+  const result = await collection.updateOne(
+    { Title: Title },
+    {
+      $set: { Code: updatedDevice.code },
+      $currentDate: { lastUpdated: true },
+    }
+  );
+  console.log(result);
+  res.send(result);
 });
 
 // DELETE
