@@ -17,7 +17,7 @@ const Edits = () => {
   useEffect(() => {
     console.log(state);
     setCode(state.Code);
-  }, []);
+  }, [code, state]);
 
   const handleValueChange = (value) => {
     setCode(value);
