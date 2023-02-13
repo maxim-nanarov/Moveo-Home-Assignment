@@ -32,3 +32,49 @@
   display: flex;
   flex-wrap: wrap;
 }
+
+a {
+  text-decoration: none;
+  color: black;
+  background-color: rgb(189, 189, 189);
+  padding: 15px 30px;
+  border-radius: 5px;
+  margin-left: 5px;
+  transition: 0.1s;
+  &:hover {
+    background-color: rgb(82, 82, 82);
+    color: white;
+  }
+}
+
+.Lobby {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.Edit {
+  height: 100%;
+  div {
+    height: 80%;
+    background-color: white;
+  }
+}
+
+button {
+  text-decoration: none;
+  color: black;
+  background-color: rgb(189, 189, 189);
+  padding: 15px 30px;
+  margin-right: 5px;
+  border-radius: 3px;
+  transition: 0.1s;
+  border: none;
+  &:hover {
+    cursor: pointer;
+    background-color: rgb(82, 82, 82);
+    color: white;
+  }
+}
