@@ -1,30 +1,17 @@
-import React from "react";
-import { useState, useEffect } from "react";
-import CodeEditor from "react-simple-code-editor";
-import { highlight, languages } from "prismjs/components/prism-core";
-import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
-import "prismjs/themes/prism.css";
-
-const Lobby = () => {
-  const [code, setCode] = useState(`console.log('Hello World');`);
-
-  const handleValueChange = (value) => {
-    setCode(value);
-  };
-
+import { Route, Routes } from "react-router-dom";
+import Edits from "./components/Edits";
+import Lobby from "./components/Lobby";
+import NotFound from "./components/unfound";
+import MainMenu from "./components/mainmenu";
+function App() {
   return (
-    <CodeEditor
-      value={code}
-      onValueChange={handleValueChange}
-      highlight={(code) => highlight(code, languages.javascript)}
-      padding={10}
-      style={{
-        fontFamily: '"Fira code", "Fira Mono", monospace',
-        fontSize: 12,
-      }}
-    />
+    <Routes>
+      <Route path="/" element={<Lobby />} />
+      <Route path="/mainmenu" element={<MainMenu />} />
+      <Route path="/Edit" element={<Edits />} />
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
-};
+}
 
-export default Lobby;
+export default App;

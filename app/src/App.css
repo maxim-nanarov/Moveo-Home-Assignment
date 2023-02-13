@@ -5,7 +5,7 @@
 
 .code-preview {
   flex: 1;
-  font-family: monospace;
+  font-family: Fira Code;
   padding: 0.5em;
   border-radius: 4px;
   background-color: #282c34;
