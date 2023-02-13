@@ -4,6 +4,8 @@ import Lobby from "./components/Lobby";
 import NotFound from "./components/unfound";
 import MainMenu from "./components/mainmenu";
 function App() {
+  //Routing for the application, it will help with navigating
+  //from page to page
   return (
     <Routes>
       <Route path="/" element={<Lobby />} />
