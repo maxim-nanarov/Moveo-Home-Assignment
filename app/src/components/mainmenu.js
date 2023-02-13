@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 
 //in here all the code templates will be displayed
 export default function MainMenu() {
