@@ -11,13 +11,6 @@ hljs.registerLanguage("javascript", javascript);
 //in here all the code templates will be displayed
 export default function CodeBlock() {
   const [Display, setDisplay] = useState(<></>);
-  const [scrollTop, setScrollTop] = useState(0);
-
-  const handleScroll = (event) => {
-    console.log("Entered handle scroll");
-    console.log(event);
-    setScrollTop(event.currentTarget.scrollTop);
-  };
 
   useEffect(() => {
     //renders 4 code blocks
@@ -47,12 +40,7 @@ export default function CodeBlock() {
       });
   }, []);
 
-  return (
-    <div className="Code-Container" onScroll={handleScroll}>
-      <h1>{scrollTop}</h1>
-      {Display}
-    </div>
-  );
+  return <div className="Code-Container">{Display}</div>;
 }
 //the code components themselves
 const Code = ({ code }) => {
