@@ -9,7 +9,7 @@ import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:3001");
+const socket = io.connect("https://moveo-ha-server-socket.herokuapp.com/");
 
 //this page is the Editor that will display code
 //and the user will be able to rewrite it.
