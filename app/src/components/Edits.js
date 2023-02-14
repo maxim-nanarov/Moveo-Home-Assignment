@@ -8,8 +8,10 @@ import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
 import io from "socket.io-client";
-
-const socket = io.connect("https://moveo-ha-server-socket.herokuapp.com/");
+//http://localhost:3001
+//"https://moveo-ha-server-socket.herokuapp.com/"
+//http://localhost:2999
+const socket = io.connect("http://localhost:3001");
 
 //this page is the Editor that will display code
 //and the user will be able to rewrite it.
@@ -21,12 +23,13 @@ const Edits = () => {
 
   //showing if you're an admin
   useEffect(() => {
-    console.log("Before");
+    console.log("Before", state.code);
+    setCode(state.code);
     socket.on("youre_admin", () => {
       setAdmin(true);
       alert("Youre the 'mentor' you cant write");
     });
-  }, []);
+  }, [state]);
   //when a user writes something in the code
   //it updates the state of the code
   //Code Updater
@@ -68,6 +71,10 @@ const Edits = () => {
       });
   }
 
+  // const handlebuttondown = (data) => {
+  //   console.log(data);
+  // };
+
   useEffect(() => {
     socket.emit("Send_Code", { code: code });
   }, [code]);
@@ -77,7 +84,7 @@ const Edits = () => {
       <h1>Edit</h1>
       <CodeEditor
         value={code}
-        onValueChange={admin ? handleValueChangeadmin : handleValueChange}
+        onValueChange={admin ? handleValueChange : handleValueChangeadmin}
         highlight={(code) => highlight(code, languages.javascript)}
         padding={10}
         style={{
