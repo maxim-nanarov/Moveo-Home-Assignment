@@ -18,9 +18,6 @@ const Edits = () => {
   const [code, setCode] = useState(`console.log('Hello World');`);
   const [admin, setAdmin] = useState(false);
   let { state } = useLocation();
-  useEffect(() => {
-    setCode(state.Code);
-  }, [state]);
 
   //showing if you're an admin
   useEffect(() => {
@@ -48,7 +45,10 @@ const Edits = () => {
       console.log(data.code);
       setCode(data.code);
     });
-  });
+  }, [socket]);
+  useEffect(() => {
+    setCode(state.Code);
+  }, [state]);
   //an update function to the database
   function Update() {
     axios
