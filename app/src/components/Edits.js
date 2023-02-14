@@ -52,9 +52,12 @@ const Edits = () => {
   //an update function to the database
   function Update() {
     axios
-      .put(`http://localhost:2999/Code-Blocks-Update/${state.Title}`, {
-        code,
-      })
+      .put(
+        `https://moveo-ha-server.herokuapp.com/Code-Blocks-Update/${state.Title}`,
+        {
+          code,
+        }
+      )
       .then((res) => {
         console.log(res);
         alert("Edit was Completed!");

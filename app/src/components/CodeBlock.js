@@ -15,7 +15,7 @@ export default function CodeBlock() {
   useEffect(() => {
     //renders 4 code blocks
     axios
-      .get("http://localhost:2999/Code-Block")
+      .get("https://moveo-ha-server.herokuapp.com/Code-Block")
       .then((res) => {
         console.log("Code Block Request: ");
         let data = res.data;

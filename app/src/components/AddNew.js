@@ -26,7 +26,7 @@ const AddNew = () => {
   ///?id=${state._id}
   function Insert() {
     axios
-      .put(`http://localhost:2999/Code-Blocks-Insert`, {
+      .put(`https://moveo-ha-server.herokuapp.com/Code-Blocks-Insert`, {
         data: { code, Title },
       })
       .then((res) => {
