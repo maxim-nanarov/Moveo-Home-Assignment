@@ -24,6 +24,7 @@ const Edits = () => {
     console.log("Before");
     socket.on("youre_admin", () => {
       setAdmin(true);
+      alert("Youre the 'mentor' you cant write");
     });
   }, []);
   //when a user writes something in the code
@@ -45,7 +46,7 @@ const Edits = () => {
       console.log(data.code);
       setCode(data.code);
     });
-  }, [socket]);
+  });
   useEffect(() => {
     setCode(state.Code);
   }, [state]);
