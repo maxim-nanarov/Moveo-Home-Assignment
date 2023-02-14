@@ -11,6 +11,14 @@ hljs.registerLanguage("javascript", javascript);
 //in here all the code templates will be displayed
 export default function CodeBlock() {
   const [Display, setDisplay] = useState(<></>);
+  const [scrollTop, setScrollTop] = useState(0);
+
+  const handleScroll = (event) => {
+    console.log("Entered handle scroll");
+    console.log(event);
+    setScrollTop(event.currentTarget.scrollTop);
+  };
+
   useEffect(() => {
     //renders 4 code blocks
     axios
@@ -39,20 +47,21 @@ export default function CodeBlock() {
       });
   }, []);
 
-  return <div className="Code-Container">{Display}</div>;
+  return (
+    <div className="Code-Container" onScroll={handleScroll}>
+      <h1>{scrollTop}</h1>
+      {Display}
+    </div>
+  );
 }
-
-const Code = ({ title, code }) => {
-  const [currentCode, setCurrentCode] = useState(code);
+//the code components themselves
+const Code = ({ code }) => {
+  const currentCode = code;
   const codeRef = React.createRef();
-
-  const handleCodeUpdate = (event) => {
-    setCurrentCode(event.target.value);
-  };
 
   useEffect(() => {
     hljs.highlightBlock(codeRef.current);
-  }, [currentCode]);
+  }, [codeRef]);
 
   return (
     <div className="code-block">

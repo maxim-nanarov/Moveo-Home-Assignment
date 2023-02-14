@@ -1,8 +1,8 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import CodeEditor from "react-simple-code-editor";
 import { highlight, languages } from "prismjs/components/prism-core";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
@@ -11,25 +11,31 @@ import "prismjs/themes/prism.css";
 //this page is the Editor that will display code
 //and the user will be able to rewrite it.
 
-const Edits = () => {
+const AddNew = () => {
   const [code, setCode] = useState(`console.log('Hello World');`);
-  let { state } = useLocation();
-  useEffect(() => {
-    setCode(state.Code);
-  }, [state]);
+  const [Title, setTitle] = useState("new Function");
 
   const handleValueChange = (value) => {
-    console.log(value);
     setCode(value);
   };
+
+  const handleValueChangeTitle = (event) => {
+    console.log("Title: " + event.target.value);
+    setTitle(event.target.value);
+  };
   ///?id=${state._id}
-  function Update() {
+  function Insert() {
     axios
-      .put(`http://localhost:2999/Code-Blocks-Update/${state.Title}`, {
-        code,
+      .put(`http://localhost:2999/Code-Blocks-Insert`, {
+        data: { code, Title },
       })
       .then((res) => {
-        console.log(res);
+        console.log(res.data);
+        if (res.data) {
+          alert("Code Title allready exist");
+        } else {
+          alert("New code has been inserted");
+        }
       })
       .catch((err) => {
         console.log(err);
@@ -38,7 +44,11 @@ const Edits = () => {
 
   return (
     <div className="Edit">
-      <h1>Edit</h1>
+      <input
+        placeholder="new function"
+        defaultvalue={Title}
+        onChange={handleValueChangeTitle}
+      />
       <CodeEditor
         value={code}
         onValueChange={handleValueChange}
@@ -50,11 +60,11 @@ const Edits = () => {
         }}
       />
       <div>
-        <button onClick={Update}>Save</button>
+        <button onClick={Insert}>Save</button>
         <Link to="/mainmenu">Back</Link>
       </div>
     </div>
   );
 };
 
-export default Edits;
+export default AddNew;
