@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from "axios";
 // import "prismjs/components/prism-clike";
-import "prismjs/components/prism-javascript";
+// import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
 import io from "socket.io-client";
 import CodeMirror from "@uiw/react-codemirror";
