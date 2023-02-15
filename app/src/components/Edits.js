@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 // import CodeEditor from "react-simple-code-editor";
 import { Link } from "react-router-dom";
 import axios from "axios";
-import "prismjs/components/prism-clike";
+// import "prismjs/components/prism-clike";
 import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism.css";
 import io from "socket.io-client";
