@@ -1,5 +1,5 @@
 import { Route, Routes } from "react-router-dom";
-import Edits from "./components/Edits";
+import EditParent from "./components/testing";
 import Lobby from "./components/Lobby";
 import NotFound from "./components/unfound";
 import MainMenu from "./components/mainmenu";
@@ -12,7 +12,7 @@ function App() {
       <Route path="/" element={<Lobby />} />
       <Route path="/mainmenu" element={<MainMenu />} />
       <Route path="/New" element={<AddNew />} />
-      <Route path="/Edit" element={<Edits />} />
+      <Route path="/Edit" element={<EditParent />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

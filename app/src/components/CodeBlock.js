@@ -29,7 +29,7 @@ export default function CodeBlock() {
               <div key={count} className="Container">
                 <h3>{e.Title}</h3>
                 <Code code={e.Code} />
-                <Link to="/Edit" state={e}>
+                <Link to="/Edit" state={e.Code}>
                   Code
                 </Link>
               </div>
