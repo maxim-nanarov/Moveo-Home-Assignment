@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 // import CodeEditor from "react-simple-code-editor";
-import { highlight, languages } from "prismjs/components/prism-core";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "prismjs/components/prism-clike";
