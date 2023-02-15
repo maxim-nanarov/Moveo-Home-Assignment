@@ -13,10 +13,6 @@ import { javascript } from "@codemirror/lang-javascript";
 // //"https://moveo-ha-server-socket.herokuapp.com/"
 // //http://localhost:2999
 
-// export default Edits;
-
-//
-
 const socket = io("https://moveo-ha-server-socket.herokuapp.com"); // Replace with your Socket.io server address
 
 const Edits = (state) => {
@@ -76,3 +72,4 @@ const Edits = (state) => {
 };
 
 export default Edits;
+//this is the end product
