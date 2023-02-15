@@ -86,7 +86,7 @@ import { javascript } from "@codemirror/lang-javascript";
 
 //
 
-const socket = io("http://localhost:3001"); // Replace with your Socket.io server address
+const socket = io("https://moveo-ha-server-socket.herokuapp.com"); // Replace with your Socket.io server address
 
 const Edits = (state) => {
   const [text, setText] = useState(state.state.state);
